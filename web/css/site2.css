@@ -1,0 +1,450 @@
+html{
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+    background-color: #ecf0f1;
+}
+
+#myNavbar{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#nav_head {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    border: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+}
+    
+#myNavbar > #nav_menu1 > li > a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  /*padding: 14px 16px;*/
+/*  padding-top: 25px;
+  padding-bottom: 25px;
+*/  /*text-decoration: none;*/
+  font-size: 17px;
+  height: 75px;
+}
+
+#myNavbar > #nav_menu1 > li > a:hover{
+  color: #172D7B;
+}
+
+#myNavbar > #nav_menu1 > .active> a{
+  background-color: #E2E3E5;
+  color: black;
+}
+
+#myNavbar > #nav_menu2 > li > a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  /*padding: 14px 16px;*/
+  padding-top: 25px;
+  padding-bottom: 25px;
+  /*text-decoration: none;*/
+  font-size: 17px;
+  height: 75px;
+}
+
+#myNavbar > #nav_menu1 > li > a.navbar-brand{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#nav-home{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.left-navigate{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#myNavbar > #nav_menu2 > li > a:hover{
+  color: #172D7B;
+}
+
+#myNavbar > #nav_menu2 > .active> a{
+  background-color: #E2E3E5;
+  color: black;
+}
+
+#section_home{
+  padding-left: 0px;
+  padding-right: 0px;
+} 
+
+#section_content{
+  padding-top:15px;
+  /*height:500px;*/
+}
+
+#section_content > #conten > .container.text-center > .row > .col-xs-6 > p {
+  padding: 15px;
+}
+
+#section_quotes{
+  padding-top:50px;
+  /*height:500px;*/
+}
+
+#section_quotes > h1{
+  padding-bottom: 25px;
+}
+
+
+#quote_img {
+  background-image: url(../images/quotes.jpg);
+  height: 250px;
+  color: #fff;
+}
+
+#quote_img > #quote_text > blockquote {
+  margin-top: 50px;
+}
+
+#quote_text{
+  background-color: rgba(0,0,0,0.5);
+  height: 250px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+#section_quotes > h1 {
+  text-align: center;
+}
+
+#section_tutor{
+  padding-top:50px;
+/*  height:500px;*/
+}
+
+#section_tutor > h1{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.team-member img {
+    width: 180px;
+    height: 180px;
+    /*border: 7px solid #fff;*/
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    box-sizing: content-box;
+    background-color: #fff;
+}
+
+.team-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.team-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.team-member p {
+    margin-top: 0;
+}
+
+.breadcrumbs_show{
+  margin-top: 25px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 25px;
+}
+
+#topbar{
+  background-color: #222222;
+  background-image: url(../images/topbar.jpg);
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  padding: 24px 0;
+  height: 170px;
+}
+
+#search_course{
+  /*margin-top: 50px;*/
+/*  margin-left: 15px;
+  margin-top: 50px;*/
+}
+
+#search_course > .row > .col-l-8{
+  padding-left: 15px;
+  padding-top: 50px;
+}
+
+#search_freebies > .row > .col-l-8{
+  padding-left: 15px;
+  padding-top: 50px;
+}
+
+#topbar > .container > .page-title{
+  /*color: #fff;*/
+}
+
+#topbar > .container > .breadcrumb {
+    border-bottom: none;
+    margin-top: 0.8em;
+    margin-bottom: 0;
+    border-top: 1px solid #ddd;
+    color: #fff;
+    background-color: none;
+}
+
+#course_content{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+#course_content > .row > .col-sm-4.my-4{
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+#freebies_content{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+#freebies_content > .row > .col-sm-4.my-4{
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+.site-about{
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+}
+
+.site-login{
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    padding: 50px;
+}
+
+/*#user_body{
+  min-height:100%;
+  position:relative;
+}*/
+
+#user_container{
+  min-height: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -90px;
+  padding-left: auto;
+  padding-right: auto;
+  padding-top: 50px;
+  padding-bottom: 90px;
+}
+
+#user_footer{
+    bottom:0; 
+    margin-bottom: 0px;
+    width:100%; 
+    height:90px;
+    background-color: #172D7B;
+    border-top: 1px solid #ddd;
+    color: #fff;
+    padding-left: 15px;
+}
+
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height: 200px;
+      max-height:720px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  #footer_home {
+    /*padding-bottom: 10px;*/
+    padding-top: 10px;
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#footer_home > .pull-left{
+  padding-top: 25px;
+}
+
+/*#footer_home > .container{
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}*/
+
+.fa {
+    padding: 15px;
+    font-size: 20px;
+    width: 45px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.9;
+}
+
+.fa > a:hover {
+    color: #fff;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.card_footer{
+  background-color: #fff;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+.card_title{
+    text-align: center;
+    /* font-weight: 200; */
+}
+
+.card_body{  
+    background-color:  #fff;
+    padding: 25px;
+}
+
+.card_box{
+    /* border: 5px solid #FFF; */
+    /* padding: 10px; */
+    background-color: #fff;
+    width: 300px;
+}
+
+.card_text {
+  text-align: left;
+}
+
+#site-portal-login {
+    margin-top: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+}
+
+#site-portal-login > .container > h1{
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.section-teacher, .section-student{
+  margin-bottom: 25px;
+  border-radius: 8px;
+  background-color: rgba(255,255,255,0.8);
+  padding: 40px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.button.button-green {
+    background-color: #51ca49;
+}
+
+.button.button-lemon {
+    background-color: #e8c700;
+}
+
+.button.big {
+    width: 80%;
+    font-size: 1.5em;
+    margin: 15px auto;
+    font-weight: 300;
+}
+
+.button {
+    display: inline-block;
+    padding: 7px 14px;
+    font: 1em/30px normal Roboto, sans-serif;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: solid 1px transparent;
+    height: auto;
+    text-transform: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover{
+  background-color: #3498db;
+  color: #fff;
+}
+
+.button > p {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,325 @@
+html{
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    padding:0; 
+    margin:0; 
+    position:relative;
+}
+
+.wrap {
+    min-height: 50%;
+    height: auto;
+    margin: 50px auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    /*padding: 70px 15px 20px;*/
+
+    padding: 0px 0px 0px 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.wrap > .container > .navbar-header {    
+    padding: 0px 0px 0px 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/*.footer {
+    height: 100px;
+    background-color: #0c0c0c;
+    border-top: 1px solid #ddd;
+    color: #fff;
+    margin: 0 auto -60px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    /*position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}*/
+
+.footer {
+    position:absolute; 
+    bottom:0; 
+    width:100%; 
+    height:100px;
+    background-color: #172D7B;
+    border-top: 1px solid #ddd;
+    color: #fff;
+    border-top: 1px solid #ddd;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.footer > .container{
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: "\e151";
+}
+
+a.desc:after {
+    content: "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    white-space: nowrap;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+      width: 100%;
+      height: 800px;
+      margin: auto;
+}
+.carousel-inner {
+    margin-top: 0px;
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+/*@media (min-width: 1200px){
+    .container > .site-index{
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}*/
+
+@media (min-width: 768px){
+    .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+        margin-right: 0;
+        margin-left: 0;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+.carousel.slide{
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+}
+
+.body-content{
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin: 50px 25px 50px 0px
+}
+
+.body-content > .container.text-center > .row {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+    margin: 0px 50px 50px 50px;
+}
+
+/*.container > .site-index > .body-content > .container.text-center > .row > .col-xs-6{
+    border: 1px;
+}*/
+.body-content > .container.text-center > .row > .col-xs-6 {
+    padding-right: 50px;
+    padding-left: 50px;
+    border: 1px;
+    border-color: black;
+}
+
+.body-content > .container.text-center > .row > .col-xs-6 > p {
+    padding-top: 25px
+}
+
+.body-content > .container.text-center > .row > .col-xs-6 > p > a{
+    margin-top: 10px;
+}
+/*.container > .site-index > .carousel.slide > .carousel.inner > .carousel-caption{
+    margin-bottom: 200px;
+}*/ 
+
+.carousel-caption{
+    text-align: center;
+}
+
+.carousel-caption > a {
+    /*margin: 0;*/
+    margin-bottom: 250px;
+    /*line-height: 1.25;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);*/
+}
+
+#testimonial {
+    padding: 60px 50px;
+    margin-bottom: 50px;
+}
+
+.testimonial-area > .container.text-center > h2{
+    margin-bottom: 50px;
+}
+
+#myCarousel-2 > .carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+}
+
+.fa {
+    padding: 15px;
+    font-size: 20px;
+    width: 45px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.9;
+}
+
+.fa > a:hover {
+    color: #fff;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+#myCarousel-2 > .carousel-indicators > li {
+    border-color: #f4511e;
+}
+
+#myCarousel-2 > .carousel-indicators > li.active {
+    background-color: #f4511e;
+}
+
+#myNavbar{
+    padding-top: 35px;
+}
