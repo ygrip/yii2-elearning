@@ -3,6 +3,10 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use app\models\Course;
+use yii\helpers\Url;
+use app\models\Users;
+use app\models\CourseMember;
 
 $this->title = 'Courses | '.Yii::$app->name;
 ?>
@@ -46,90 +50,86 @@ $this->title = 'Courses | '.Yii::$app->name;
                 </div>
             </div>
         </div>
+        <p>
+        <?php 
+            if(Yii::$app->session->get('teacher')||Yii::$app->session->get('admin')){
+                echo Html::a('Create Course', ['/course/create'], ['class'=>'btn btn-primary grid-button']);
+                echo Html::a('See Request Member in My Course', ['/course/view'], ['class'=>'btn btn-primary grid-button']);
+            }
+        ?>
+        </p>
     </div>
 
     <div id="course_content" class="container text-center">
-        <div class="row">
-            <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
+    <?php
+    $session = Yii::$app->session;
+    if(Yii::$app->session->get('teacher')){
+        $member = Course::find()->select('title, description, id, course_image')->where(['mentor' => $session->get('id')])->all();
+            foreach($member as $value){
+        ?>
+                <div class="col-sm-4 my-4">
+                    <div class="card_box">
+                        <img class="card-img-top" src=<?php echo Url::base().'/uploads/course/images/'.$value->course_image; ?> style="height: 200px; width: 300px;" alt="">
+                        <div class="card_body">
+                            <h4 class="card_title"><?php echo $value->title ?></h4>
+                            <p class="card_text"><?php echo $value->description ?></p>
+                        </div>
+                        <div class="card_footer">
+                            <?= Html::a('See More', ['/course/seecourse', 'idcourse' => $value->id], ['class'=>'btn btn-primary']) ?>
+                        </div>
                     </div>
                 </div>
+        <?php
+            }
+        } else if(Yii::$app->session->get('user')){
+            //$titles = Yii::$app->db->createCommand('SELECT title FROM freebies')->queryColumn();
+            $course = Course::find()->select('id, title, mentor, description, course_image')->all();
+            foreach($course as $value){
+        ?>
+        <div class="col-sm-4 my-4">
+          <div class="card">
+            <img class="card-img-top" src=<?php echo Url::base().'/uploads/course/images/'.$value->course_image; ?> style="height: 200px; width: 300px;" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><?php echo $value->title ?></h4>
+              <p class="card-text"><?php echo $value->description?></p>
             </div>
-
-            <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
-                </div>
+            <div class="card-footer">
+            <?php 
+            $member = CourseMember::find()->select('id_user, id_course')->where(['id_user' => $session->get('id'), 'id_course' => $value->id])->one();
+            if(empty($member)){
+              echo Html::a('Enroll Me!', ['/course/enroll', 'id' => $value->id], ['class'=>'btn btn-primary']);
+            }else{
+              echo Html::a('Unroll Me!', ['/course/deleteenroll', 'idcourse' => $value->id, 'iduser' => $session->get('id')], ['class'=>'btn btn-primary']);
+            }
+            ?>
             </div>
+          </div>
         </div>
-        <!-- /.row -->
-
-        <div class="row">
+<?php
+    }
+?>
+        <?php
+        }else{
+            $member = Course::find()->all();
+            foreach($member as $value){
+    ?>
             <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
+                    <div class="card_box">
+                        <img class="card-img-top" src=<?php echo Url::base().'/uploads/course/images/'.$value->course_image; ?> style="height: 200px; width: 300px;" alt="">
+                        <div class="card_body">
+                            <h4 class="card_title"><?php echo $value->title ?></h4>
+                            <p class="card_text"><?php echo $value->description ?></p>
+                        </div>
+                        <div class="card_footer">
+                            <?= Html::a('See More', ['/course/seecourse', 'idcourse' => $value->id], ['class'=>'btn btn-primary']) ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+    <?php
+            }
+        }
+    ?>
 
-            <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 my-4">
-                <div class="card_box">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card_body">
-                        <h4 class="card_title">Card title</h4>
-                        <p class="card_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card_footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>

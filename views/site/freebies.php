@@ -19,8 +19,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
+
     <p>
-	<?= Html::a('Insert Freebies', ['/site/insertfreebies'], ['class'=>'btn btn-primary grid-button']) ?>
+	<?php if(Yii::$app->session->get('teacher')||Yii::$app->session->get('admin')){
+	 	echo Html::a('Insert Freebies', ['/site/insertfreebies'], ['class'=>'btn btn-primary grid-button']);
+	 }else{
+	 		
+	 	}?>
+
 	</p>
     <div class="row">
         <div class="col-lg-5">
@@ -33,9 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						'toggleButton' => ['tag' => 'a', 'label' => $value->title, 'class' => 'btn btn-primary grid-button'],
 					]);
 
-					echo \yii2assets\pdfjs\PdfJs::widget([
-					  'url' => Url::base().'/uploads/'.$value->filename
-					]);
+					
 
 					Modal::end();
 				}

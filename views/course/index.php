@@ -1,10 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-use frontend\models\Course;
-use common\models\User;
+use app\models\Course;
+use app\models\User;
 use yii\helpers\Url;
-use frontend\models\CourseMember;
+use app\models\CourseMember;
 
 ?>
 <h1>List Course</h1>

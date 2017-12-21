@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
-use frontend\models\Task;
-use common\models\CourseSchedule;
+use app\models\Task;
+use app\models\CourseSchedule;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;

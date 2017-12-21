@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <p>
-	<?= Html::a('Klik disini untuk Generate Kode Verifikasi', ['/site/generaterandom'], ['class'=>'btn btn-primary grid-button']) ?>
+	<?= Html::a('Klik disini untuk Generate OTP', ['/site/generaterandom'], ['class'=>'btn btn-primary grid-button']) ?>
 </p>
 
 <p><h3>Masukkan Kode Berikut : </h3></p>

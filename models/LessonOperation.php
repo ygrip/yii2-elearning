@@ -46,7 +46,7 @@ class LessonOperation extends Model
             $model->lesson_image = $this->file->baseName . '.' . $this->file->extension;
             $model->published = new Expression('NOW()');
             $model->create_at = new Expression('NOW()');
-            $this->file->saveAs('uploads/course/images/' . $this->file->baseName . '.' . $this->file->extension);
+            $this->file->saveAs('uploads/lessons/images/' . $this->file->baseName . '.' . $this->file->extension);
             return $model->save() ? $model : null;
         } else {
             return null;

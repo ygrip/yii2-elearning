@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
-use frontend\models\CourseMember;
-use frontend\models\Course;
-use common\models\User;
+use app\models\CourseMember;
+use app\models\Course;
+use app\models\Users;
 use yii\helpers\Html;
 
 ?>
@@ -10,7 +10,11 @@ use yii\helpers\Html;
 
 <?php
 	//$titles = Yii::$app->db->createCommand('SELECT title FROM freebies')->queryColumn();
-	$member = CourseMember::find()->select('id_user, id_course')->where(['status' => 0, 'id_user' => Yii::$app->user->identity->id])->all();
+  $session = Yii::$app->session;
+  $course = Course::find()->where(['mentor'=>$session->get('id')])->all();
+  foreach ($course as $c_val) {
+    # code...
+	$member = CourseMember::find()->select('id_user, id_course')->where(['status' => 0, 'id_course' => $c_val->id])->all();
 	foreach($member as $value){
 ?>
 		<div class="col-sm-4 my-4">
@@ -27,7 +31,7 @@ use yii\helpers\Html;
               <p class="card-text">
               	<?php 
               		$iduser = $value->id_user; 
-              		$user = User::find()->select('username')->where(['id' => $iduser])->one();
+              		$user = Users::find()->select('username')->where(['id' => $iduser])->one();
               		echo 'Nama Member = '.$user->username;
               	?>
               </p>
@@ -40,4 +44,5 @@ use yii\helpers\Html;
         </div>
 <?php
 	}
+}
 ?>

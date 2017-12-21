@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
 use app\models\Freebies;
+use app\models\Users;
 
 class UploadFile extends Model
 {
@@ -27,15 +28,20 @@ class UploadFile extends Model
     
     public function upload()
     {
-        if ($this->validate()) {
-			$freebies = new Freebies();
-			$freebies->id_user = Yii::$app->user->identity->id;
-			$freebies->title = $this->title;
-			$freebies->filename = $this->file->baseName . '.' . $this->file->extension;
-			$freebies->description = $this->description;
-            $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
-            return $freebies->save() ? $freebies : null;
-        } else {
+        $session = Yii::$app->session;
+        if($session->has('admin')||$session->has('teacher')){
+            if ($this->validate()) {
+    			$freebies = new Freebies();
+    			$freebies->id_user = $session->get('id');
+    			$freebies->title = $this->title;
+    			$freebies->filename = $this->file->baseName . '.' . $this->file->extension;
+    			$freebies->description = $this->description;
+                $this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
+                return $freebies->save() ? $freebies : null;
+            } else {
+                return null;
+            }
+        }else{
             return null;
         }
     }

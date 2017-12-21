@@ -32,15 +32,20 @@ class Schedule extends Model
 
     public function upload()
     {
-        if ($this->validate()) {
-			$schedule = new CourseSchedule();
-			$schedule->id_user = Yii::$app->user->identity->id;
-			$schedule->id_course = $this->id_course;
-			$schedule->tanggal_mulai = $this->tanggal_mulai;
-            $schedule->tanggal_berakhir = $this->tanggal_berakhir;
-            $schedule->text_info = $this->text_info;
-            return $schedule->save() ? $schedule : null;
-        } else {
+        $session = Yii::$app->session;
+        if($session->has('admin')||$session->has('teacher')){
+            if ($this->validate()) {
+    			$schedule = new CourseSchedule();
+    			$schedule->id_user = $session->get('id');
+    			$schedule->id_course = $this->id_course;
+    			$schedule->tanggal_mulai = $this->tanggal_mulai;
+                $schedule->tanggal_berakhir = $this->tanggal_berakhir;
+                $schedule->text_info = $this->text_info;
+                return $schedule->save() ? $schedule : null;
+            } else {
+                return null;
+            }
+        }else{
             return null;
         }
     }

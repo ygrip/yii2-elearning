@@ -1,18 +1,30 @@
+<?php
+use app\models\Users;
+
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
-
+        
         <!-- Sidebar user panel -->
+        <?php 
+        if (Yii::$app->session->has('admin')) {
+        ?>
         <div class="user-panel">
             <div class="pull-left image">
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <?php $user = Users::find()->where(['id'=>Yii::$app->session->get('id')])->one();
+                ?>
+                <p>Welcome, <br><?= $user['email']; ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
+        <?php
+        }
+        ?>
 
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
@@ -30,36 +42,13 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['admin/login'], 'visible' => Yii::$app->user->isGuest],
-                    [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
+                    ['label' => 'Admin Menu', 'options' => ['class' => 'header']],
+                    ['label' => 'Course', 'icon' => 'book', 'url' => ['admincourse/']],
+                    ['label' => 'Course Type', 'icon' => 'file-text-o', 'url' => ['admincourse/coursetype']],
+                    ['label' => 'User', 'icon' => 'user', 'url' => ['admincourse/user']],
+                    ['label' => 'Question', 'icon' => 'question-circle', 'url' => ['/question']],
+                    ['label' => 'Answer', 'icon' => 'pencil', 'url' => ['/answer']],
+                    ['label' => 'Freebies (Free Content)', 'icon' => 'tag', 'url' => ['/freebies']],
                 ],
             ]
         ) ?>

@@ -67,7 +67,7 @@ class AdminController extends \yii\web\Controller
         if($session->has("admin")&&$session->get('role')==1){
             return $this->render('index');
         }else{
-            return $this->redirect('admin/login');
+            return $this->redirect('login');
         }
 
     }
@@ -75,11 +75,11 @@ class AdminController extends \yii\web\Controller
     public function actionLogin(){
         $session = Yii::$app->session;
         if($session->has("admin")&&$session->get('role')==1){
-           return $this->redirect('admin/index');
+           return $this->redirect('index');
         }else{
              $model = new LoginForm();
             if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                return $this->redirect(['admin/index']);
+                return $this->redirect('index');
             }
 
             $model->password = '';

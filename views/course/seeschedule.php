@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
-use frontend\models\Course;
-use frontend\models\UploadFileTask;
-use frontend\models\CourseSchedule;
+use app\models\Course;
+use app\models\UploadFileTask;
+use app\models\CourseSchedule;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
@@ -24,8 +24,10 @@ $course = Course::find()->select('title')->where(['id' => $schedule->id_course])
 </p>
 
 <p><h3>List Task : </h3></p>
-<?=
-    GridView::widget([
+<?php
+    $session = Yii::$app->session;
+    if(Yii::$app->session->get('user') || Yii::$app->session->get('teacher')){
+    echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -33,7 +35,7 @@ $course = Course::find()->select('title')->where(['id' => $schedule->id_course])
             'title', 'description',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{link}', 'buttons' => ['link' => function ($url,$model,$key) {
-                $upload = UploadFileTask::find()->select('id_user')->where(['id_user' => Yii::$app->user->identity->id, 'id_task' => $key])->one();
+                $upload = UploadFileTask::find()->select('id_user')->where(['id_user' => Yii::$app->session->get('id'), 'id_task' => $key])->one();
                 if(empty($upload)){
                     return Html::a('Upload Tugas', ['/course/seetask', 'idtask' => $key, 'idschedule' => $model->id_schedule]);
                 }else{
@@ -42,6 +44,7 @@ $course = Course::find()->select('title')->where(['id' => $schedule->id_course])
                 },],],
         ],
     ]);
+    }
 ?>
 
 <p><h3>List Question : </h3></p>

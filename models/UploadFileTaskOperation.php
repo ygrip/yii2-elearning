@@ -27,15 +27,20 @@ class UploadFileTaskOperation extends Model
     
     public function upload()
     {
-        if ($this->validate()) {
-			$uploadfile = new UploadFileTask();
-			$uploadfile->id_task = $this->id_task;
-            $uploadfile->id_user = Yii::$app->user->identity->id;
-			$uploadfile->filename = $this->file->baseName . '.' . $this->file->extension;
-            $uploadfile->uploaded_at = new Expression('NOW()');
-            $this->file->saveAs('uploads/task/' . $this->file->baseName . '.' . $this->file->extension);
-            return $uploadfile->save() ? $uploadfile : null;
-        } else {
+        $session = Yii::$app->session;
+        if($session->has('admin')||$session->has('teacher')){
+            if ($this->validate()) {
+    			$uploadfile = new UploadFileTask();
+    			$uploadfile->id_task = $this->id_task;
+                $uploadfile->id_user = $session->get('id');
+    			$uploadfile->filename = $this->file->baseName . '.' . $this->file->extension;
+                $uploadfile->uploaded_at = new Expression('NOW()');
+                $this->file->saveAs('uploads/task/' . $this->file->baseName . '.' . $this->file->extension);
+                return $uploadfile->save() ? $uploadfile : null;
+            } else {
+                return null;
+            }
+        }else{
             return null;
         }
     }

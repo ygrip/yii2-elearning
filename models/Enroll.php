@@ -18,13 +18,18 @@ class Enroll extends Model
 
     public function upload()
     {
-        if ($this->validate()) {
-			$enroll = new CourseMember();
-			$enroll->id_user = Yii::$app->user->identity->id;
-			$enroll->id_course = $this->id_course;
-			$enroll->status = 0;
-            return $enroll->save() ? $enroll : null;
-        } else {
+        $session = Yii::$app->session;
+        if($session->has('user')){
+            if ($this->validate()) {
+    			$enroll = new CourseMember();
+    			$enroll->id_user = $session->get('id');
+    			$enroll->id_course = $this->id_course;
+    			$enroll->status = 0;
+                return $enroll->save() ? $enroll : null;
+            } else {
+                return null;
+            }
+        }else{
             return null;
         }
     }

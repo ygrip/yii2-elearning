@@ -1,8 +1,8 @@
 <?php
 /* @var $this yii\web\View */
-use frontend\models\Course;
-use frontend\models\UploadFileTask;
-use frontend\models\CourseSchedule;
+use app\models\Course;
+use app\models\UploadFileTask;
+use app\models\CourseSchedule;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;

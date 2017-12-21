@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-use frontend\models\Course;
+use app\models\Course;
 use yii\helpers\Html;
 use yii\helpers\Url;
 

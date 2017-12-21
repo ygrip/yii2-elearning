@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use frontend\models\CourseType;
+use app\models\CourseType;
 use yii\helpers\ArrayHelper;
 
 ?>

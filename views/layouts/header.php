@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
+
 
 ?>
 
@@ -12,10 +14,31 @@ use yii\helpers\Url;
                     <li class="left-navigate"><a href="<?= Url::to(['/']);?>"><strong>Home</strong></a></li>
                     <li class="left-navigate"><a href="<?= Url::to(['site/course']);?>"><strong>Course</strong></a></li>
                     <li class="left-navigate"><a href="<?= Url::to(['site/freebies']);?>"><strong>Freebies</strong></a></li>
+                    <?php 
+                        $session = Yii::$app->session;
+
+                        if($session->has('teacher')){
+                    ?>
+                    <li class="left-navigate"><a href="<?= Url::to(['site/linechatbot']);?>"><strong>Line Chatbot Integration</strong></a></li>
+                    <?php } ?>
                 </ul>
                 <ul id="nav_menu2" class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#"><strong>Register</strong></a></li> -->
+                    <?php 
+                    
+                    if($session->has('user')||$session->has('teacher')||$session->has('admin')){
+                    ?>
+                    <li><?= Html::a(
+                                    'Sign out',
+                                    ['/site/logout'],
+                                    ['data-method' => 'post', ]
+                                ) ?></li>
+                    <?php
+                    }else{?>
                     <li><a href="<?= Url::to(['site/portal']);?>"><strong>Login</strong></a></li>
+
+                    <?php
+                }?>
                 </ul>
             </div>
         </div>
